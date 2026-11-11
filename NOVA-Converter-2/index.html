@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d18"><title>NOVA Compress</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+ <div class="brand"><div class="logo">N</div><div><strong>NOVA</strong><small>COMPRESS</small></div></div>
+ <div class="nav-caption">MENU</div>
+ <button class="nav active" data-page="compress"><span>◉</span> Compresser</button>
+ <button class="nav" data-page="extract"><span>▣</span> Extraire un ZIP</button>
+ <button class="nav" data-page="history"><span>◷</span> Historique</button>
+ <div class="side-info"><i></i><div><b>100 % local</b><small>Les fichiers restent sur ton appareil.</small></div></div>
+</aside>
+<main>
+<header><div><div class="kicker">OUTIL SIMPLE ET RAPIDE</div><h1 id="heading">Compresser mes fichiers</h1></div><div class="top-tag">NOVA <span>● EN LIGNE</span></div></header>
+<section id="page-compress" class="page active">
+ <div class="welcome"><div><div class="pill">✦ COMPRESSEUR DE FICHIERS</div><h2>Moins lourd.<br><em>Plus simple.</em></h2><p>Ajoute tes fichiers, choisis la compression et télécharge le résultat.</p></div><div class="big-symbol">↓<small>ZIP</small></div></div>
+ <div class="workspace">
+  <div class="left-col">
+   <div class="card upload-card" id="drop">
+    <div class="upload-symbol">↑</div><h3>Ajoute tes fichiers</h3><p>Glisse-dépose ici ou sélectionne sur ton PC.</p>
+    <label class="btn" for="files">＋ Choisir des fichiers</label><input id="files" type="file" multiple hidden>
+    <small>Images, vidéos, documents, sons, mods, ZIP et autres fichiers.</small>
+   </div>
+   <div class="card settings">
+    <div class="card-title"><span class="number">01</span><div><b>Réglages</b><small>Choisis comment compresser</small></div></div>
+    <label class="field-label" for="mode">Type de compression</label>
+    <select id="mode"><option value="zip">Compresser tous les fichiers en ZIP</option><option value="images">Optimiser les images (JPG, PNG, WebP)</option></select>
+    <label class="field-label" for="level">Puissance de compression <strong id="level-label">Forte · 7/9</strong></label>
+    <input id="level" type="range" min="1" max="9" value="7">
+    <div class="range-labels"><span>Rapide</span><span>Maximum</span></div>
+    <label class="field-label" for="target">Taille souhaitée (facultatif)</label>
+    <div class="input-suffix"><input id="target" type="number" min="0.1" step="0.1" value="2"><span>Mo max.</span></div>
+    <p class="hint">La limite est un objectif : certains fichiers ne peuvent pas être réduits autant. La compression ZIP ne garantit pas une taille précise.</p>
+    <label class="check"><input type="checkbox" id="target-on" checked> Essayer de respecter la taille souhaitée pour les images</label>
+    <button id="start" class="btn full">Compresser maintenant <span>→</span></button>
+   </div>
+  </div>
+  <div class="right-col">
+   <div class="card files-card">
+    <div class="list-heading"><div><div class="card-title"><span class="number">02</span><div><b>Mes fichiers</b><small id="count">Aucun fichier ajouté</small></div></div></div><button id="clear" class="text-btn">Tout retirer</button></div>
+    <div id="file-list" class="file-list empty"><div class="empty-icon">▤</div><b>La liste est vide</b><span>Ajoute des fichiers pour commencer.</span></div>
+    <div class="summary"><span>Taille totale</span><b id="total">0 octet</b></div>
+   </div>
+   <div class="card result-card" id="result">
+    <div class="result-icon">✓</div><div><b>Prêt à compresser</b><p>Le résultat apparaîtra ici après le traitement.</p></div>
+   </div>
+   <div class="tip"><b>ⓘ À savoir</b><p>Le ZIP fonctionne avec presque tous les types de fichiers. Les fichiers déjà compressés (MP4, MP3, JPG, ZIP…) gagnent parfois très peu de place.</p></div>
+  </div>
+ </div>
+</section>
+<section id="page-extract" class="page">
+ <div class="subhead"><div class="pill">ARCHIVES</div><h2>Extraire une archive ZIP</h2><p>Choisis un fichier ZIP pour récupérer son contenu.</p></div>
+ <div class="card extract-box"><div class="upload-symbol">▣</div><h3>Ouvre ton archive</h3><p>Les fichiers extraits seront téléchargés séparément.</p><label class="btn" for="zipfile">Choisir un fichier ZIP</label><input id="zipfile" type="file" accept=".zip,application/zip" hidden><div id="extract-status" class="status"></div></div>
+</section>
+<section id="page-history" class="page">
+ <div class="subhead"><div class="pill">ACTIVITÉ</div><h2>Historique</h2><p>Les dernières opérations de cette session.</p></div>
+ <div class="card" id="history"><div class="empty-state">Aucune opération pour le moment.</div></div>
+</section>
+<footer>NOVA COMPRESS <span>Version 2.0 · Traitement local dans ton navigateur</span></footer>
+</main>
+</div>
+</body></html>
